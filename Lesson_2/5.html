@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+<script>
+  "use strict";
+
+  /** This is a description of the sum function.
+   * @param {number} a - The number 'a'
+   * @param {number} b - The number 'b'
+   */
+  function sum(a, b) {
+  return a + b;
+  }
+
+  /** This is a description of the difference function.
+   * @param {number} a - The number 'a'
+   * @param {number} b - The number 'b'
+   */
+  function difference(a, b) {
+    // if  
+    return (a > b) ? a - b :b - a
+    // else
+    //   return ;
+  }
+ 
+  /** This is a description of the multiplication function.
+   * @param {number} a - The number 'a'
+   * @param {number} b - The number 'b'
+   */
+  function multiplication(a, b) {
+    return a * b;
+  }
+
+  /** This is a description of the division function.
+   * @param {number} a - The number 'a'
+   * @param {number} b - The number 'b'
+   */
+  function division(a, b) {
+    return (Math.round(a / b * 100)) / 100;   
+  }
+
+  /** This is a description of the universal math function.
+   * @param {number} arg1 - The number 'arg1'
+   * @param {number} arg2 - The number 'arg2'
+   * @param {string} operation - The mathematical sign
+   */
+  function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+      case '+':
+        return sum(arg1, arg2);
+      case '-':
+        return difference(arg1, arg2);
+      case '*':
+        return multiplication(arg1, arg2);
+      case '/':
+        return division(arg1, arg2);
+      default:
+        return NaN;
+    }
+  }
+
+  console.log(mathOperation(5, 3, "+")); // 8
+  console.log(mathOperation(5, 3, ":)")); // NaN
+  console.log(mathOperation(5, 3, "-")); // 2
+  console.log(mathOperation(5, 6, "-")); // 1
+  console.log(mathOperation(5, 3, "*")); // 15
+  console.log(mathOperation(10, 3, "/")); // 1.33
+
+</script>
+</body>
+</html>
