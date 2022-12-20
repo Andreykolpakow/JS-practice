@@ -44,19 +44,19 @@
     },
   ];
 
-  let photos = products.filter(function(product) {
+  const photos = products.filter(function(product) {
     // ни просто product.photos, ни product.photos.length > 0 не сработали
     // по-отдельности. Видимо, пустой массив в JS является True.  Ну а если
     // свойства photos нет - то и его длину не измерить.
 
     return product.photos && product.photos.length > 0;
-  })
-  console.log(photos)
+  });
+  console.log(photos);
 
   products.sort(function(a, b) {
-    return a.price - b.price
-  })
-  console.log(products)
+    return a.price - b.price;
+  });
+  console.log(products);
 </script>
 </body>
 </html>

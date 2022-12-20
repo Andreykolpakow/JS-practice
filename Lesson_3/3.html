@@ -29,8 +29,8 @@
     },
   ];
 
-  // function(item) даст тот же результат
-  products.forEach(function(item, i, products) {
+  // function(item, i, products) даст тот же результат
+  products.forEach(function(item) {
     item.price *= 0.85;
     // для проверки вывел алерт:
     alert('id ' + item.id + ", price: " + item.price); 
