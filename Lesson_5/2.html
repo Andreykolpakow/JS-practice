@@ -34,6 +34,13 @@
   свойство classList у элементов.
    */
 
+  console.log('Задание 1');
+  let itemsList = document.querySelectorAll('.dropdown-item');
+  itemsList.forEach(function(elem) {
+    elem.classList.add('super-dropdown');
+    console.log(elem);
+  });
+
 
   /*
   2. У элемента с классом btn необходимо убрать класс "btn-secondary", если он
@@ -41,11 +48,29 @@
   не было.
    */
 
+  console.log('Задание 2');
+  let btnList = document.querySelectorAll('.btn');
+  console.log(btnList);
+  btnList.forEach(function(elem) {
+    // console.log(elem);
+    elem.classList.toggle("btn-secondary");
+    console.log(elem);
+  });
+
 
   /*
   3. Необходимо удалить класс "dropdown-menu" у элемента, у которого
   присутствует класс "menu".
    */
+
+  console.log('Задание 3');
+  let menuList = document.querySelectorAll('.menu');
+  console.log(menuList);
+  menuList.forEach(function(elem) {
+    // console.log(elem);
+    elem.classList.toggle("dropdown-menu", false);
+    console.log(elem);
+  });
 
 
   /*
@@ -54,10 +79,19 @@
     <a href="#">link</a>
    */
 
+  console.log('Задание 4');
+  const dropdownDiv = document.querySelector('div.dropdown');
+  dropdownDiv.insertAdjacentHTML('afterend', '<a href="#">link</a>');
+  
 
   /*
   5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
    */
+
+  console.log('Задание 5');
+  let dropdownMenuButton = document.getElementById("dropdownMenuButton");
+  dropdownMenuButton.setAttribute("id", "superDropdown");
+  console.log(dropdownMenuButton);
 
 
   /*
@@ -65,11 +99,18 @@
   атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
    */
 
+  console.log('Задание 6');
+  let elem = document.querySelector('[aria-labelledby="dropdownMenuButton"]');
+  elem.dataset.dd = 3;
+  console.log(elem);
 
   /*
   7. Удалите атрибут type у элемента с классом "dropdown-toggle".
    */
-
+  console.log('Задание 7');
+  let dropdownToggle = document.querySelector('.dropdown-toggle');
+  dropdownToggle.removeAttribute('type');
+  console.log(dropdownToggle);
 
   /*
   8. Выведите в консоль все имеющиеся атрибуты и их значения тега у которого
@@ -78,6 +119,11 @@
   Атрибут "class" содержит значение "btn btn-secondary dropdown-toggle"
    */
 
+  console.log('Задание 8');
+  let dubleClassTag = document.querySelector('.btn.dropdown-toggle');
+  for (const attr of dubleClassTag.attributes) {
+      console.log( `Атрибут "${attr.name}" содержит значение "${attr.value}"` );
+    };
 
 </script>
 </body>
