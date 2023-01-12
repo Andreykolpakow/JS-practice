@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Необязательное задание, но желательно сделать.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для поста в социальной сети.
+Названия: `PostES5` для es5 стиля и `PostES6` для es6 стиля.
+Пост должен хранить:
+1. Автора поста (имени достаточно).
+2. Текст поста.
+3. Дату и время последнего изменения поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Каждому экземпляру объекта должен быть доступен метод `edit`, который будет
+менять текст поста.
+
+---
+
+Необходимо создать функцию-конструктор/класс для закрепленного поста в
+социальной сети.
+Названия: `AttachedPostES5` для es5 стиля и `AttachedPostES6` для es6 стиля.
+Закрепленный пост должен наследоваться от обычного поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Закрепленный пост должен иметь свойство `highlighted`, в котором по умолчанию
+будет лежать значение false (это свойство будет обозначать, будет ли наш
+закрепленный пост подсвечен).
+У экземпляров объекта закрепленного поста должен быть метод с названием
+`makeTextHighlighted`, который сделает так, чтобы наш пост стал подсвеченным
+(будет менять свойство `highlighted`).
+
+---
+
+Подсказки:
+1. Задание сложное, советую делать по аналогии с примером на онлайн-занятии.
+2. Обратите внимание что пост хранит "дату и время последнего изменения
+поста", это значит что если пост кто-то изменит (например вызовет какой-то
+метод, который изменит что-то в посте), дата и время последнего изменения
+поста также должна измениться.
+3. Выполняйте все по порядку, не стоит пытаться сделать все сразу, иначе можно
+что-нибудь пропустить.
+4. Если непонятно условие - задайте вопрос.
+-->
+<script>
+  "use strict";
+
+  function sleep(milliseconds) {
+    const startTime = Date.now();
+    let currentTime = null;
+    do {
+      currentTime = Date.now();
+    } while (currentTime - milliseconds < startTime);
+  }
+
+  console.log(`ES5`);
+
+  function PostES5(name, postText) {
+    this.name = name;
+    this.postText = postText;
+    this.changeTime = Date();
+  }
+
+  PostES5.prototype.edit = function(newText) {
+    this.postText = newText;
+    this.changeTime = Date();
+  };
+
+  const newPost = new PostES5('John', 'Hi');
+  console.log(newPost);
+  sleep(1000);
+  newPost.edit('Hi, friends!');
+  console.log(newPost);
+
+  function AttachedPostES5(name, postText) {
+    PostES5.call(this, name, postText);
+    //this.changeTime = Date();
+    this.highlighted = false;
+  }
+
+  AttachedPostES5.prototype.makeTextHighlighted = function() {
+    this.highlighted = true;
+    this.changeTime = Date();
+  };
+
+  const newAttachedPost = new AttachedPostES5('Dan', "It's very impotent post");
+  console.log(newAttachedPost);
+  console.log(`newAttachedPost.highlighted is ${newAttachedPost.highlighted}`);
+  sleep(1000);
+  newAttachedPost.makeTextHighlighted();
+  console.log(newAttachedPost);
+
+  console.log(`ES6`);
+
+  class PostES6 {
+    constructor(name, postText) {
+      this.name = name;
+      this.postText = postText;
+      this.changeTime = Date();
+    }
+
+    edit(newText) {
+      this.postText = newText;
+      this.changeTime = Date();
+  };
+  }
+
+  const newPostES6 = new PostES6('Bob', 'Hellow');
+  console.log(newPostES6);
+  sleep(1000);
+  newPostES6.edit('Hellow, friends!');
+  console.log(newPostES6);
+
+  class AttachedPostES6 {
+    constructor(name, postText) {
+    PostES5.call(this, name, postText);
+    //this.changeTime = Date();
+    this.highlighted = false;
+  }
+
+  makeTextHighlighted = function() {
+    this.highlighted = true;
+    this.changeTime = Date();
+  };
+  }
+
+  const newAttachedPostES6 = new AttachedPostES6('Pit', "It's ES6 post");
+  console.log(newAttachedPostES6);
+  console.log(`newAttachedPostES6.highlighted is ${newAttachedPostES6.highlighted}`);
+  sleep(1000);
+  newAttachedPostES6.makeTextHighlighted();
+  console.log(newAttachedPostES6);
+</script>
+</body>
+</html>
